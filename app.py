@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 import numpy as np
+import os
 
 # ==========================
 # CONFIGURATION & LOADING
@@ -10,9 +11,14 @@ st.set_page_config(page_title="INX Future Inc - Employee Performance Predictor",
 
 @st.cache_resource
 def load_model():
-    return joblib.load("./inx_outputs/best_model_GradientBoosting.pkl")
+    model_path = os.path.join(os.path.dirname(__file__), "inx_outputs", "best_model_GradientBoosting.pkl")
+    if not os.path.exists(model_path):
+        st.error(f"Model file not found at: {model_path}")
+        st.stop()
+    return joblib.load(model_path)
 
 model = load_model()
+
 
 st.title("🧠 INX Future Inc — Employee Performance Prediction")
 st.markdown("""
