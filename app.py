@@ -30,10 +30,10 @@ Just fill in the details below and click **Predict Performance**!
 @st.cache_resource
 def load_model():
     try:
-        model = joblib.load("employee_performance_model.pkl")
+        model = joblib.load("random_forest_employee_performance_model.pkl")
         return model
     except:
-        st.error("Model file not found. Please ensure 'employee_performance_model.pkl' is in the app directory.")
+        st.error("Model file not found. Please ensure 'random_forest_employee_performance_model.pkl' is in the app directory.")
         return None
 
 model = load_model()
