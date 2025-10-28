@@ -10,7 +10,7 @@ st.set_page_config(page_title="INX Future Inc - Employee Performance Predictor",
 
 @st.cache_resource
 def load_model():
-    return joblib.load("best_model_RandomForest.pkl")
+    return joblib.load("./inx_outputs/best_model_GradientBoosting.pkl")
 
 model = load_model()
 
